@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Creepster&family=Dosis:wght@500&family=Mansalva&display=swap" rel="stylesheet">
     {{-- favicon --}}
-    <link rel="icon" type="image/jpg" href="img/formas.png"/>
+    <link rel="icon" type="image/jpg" href="img/camino.png"/>
 </head>
 <body>
     <!-- CABECERA -->
@@ -120,7 +120,7 @@
                 <div class="user_card3">
                     <div class="text-center h-100 titulo">
                         <h1>Elige bien tu camino...</h1>
-                        <h2>¿En qué consiste el juego?</h2>
+                        <h2 class="mb-5">¿En qué consiste el juego?</h2>
                         <h4>
                             "Elige bien tu camino" te invita a sumergirte en una aventura llena de decisiones determinantes para tu destino. En cada fase, enfrentarás preguntas y desafíos cruciales que te obligarán a elegir un camino y realizar acciones significativas. <br>Un porcentaje te mostrará las probabilidades de éxito y supervivencia en cada etapa. <br>¡Explora, decide con sabiduría y descubre los emocionantes giros que te esperan en esta experiencia interactiva única!
                         </h4>

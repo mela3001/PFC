@@ -16,7 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Creepster&family=Dosis:wght@500&family=Mansalva&display=swap" rel="stylesheet">
-    
+    {{-- favicon --}}
+    <link rel="icon" type="image/jpg" href="img/camino.png"/>
 </head>
 {{-- <audio id="myAudio" src="{{ asset('audio/aves.mp3') }}"></audio>
 <body onload="playAudio()"> --}}
@@ -47,11 +48,11 @@
                         <!-- FIN IMAGEN -->
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center form_container">
-                        <div class="text-center h-100 titulo p-4">
+                        <div class="text-center h-100 titulo titulo-juego p-4">
                             <h4>{{ $juego1->titulo }}</h4>
                         </div>
                         <!-- FORMULARIO -->
-                        <div class="d-flex justify-content-center mt-3 login_container">
+                        <div class="d-flex justify-content-center mt-3 login_container botones-juego">
                             <form action="{{route('juegoResto')}}" method="POST">
                                 @csrf
                                 @method('PUT') 
@@ -69,7 +70,7 @@
                                     <input type="hidden" name="opcion" value="{{$juego1->opcion2ruta}}">
                                     <input type="hidden" name="usuario" value='{{session('usuario')}}'>
                                     <input type="hidden" name="prob" value="{{$juego1->probabilidad}}">
-                                    <button type="submit" class="btn op_btn" onclick="goToNextPage()">{{ $juego1->opcion2 }}</button>
+                                    <button type="submit" class="btn op1_btn" onclick="goToNextPage()">{{ $juego1->opcion2 }}</button>
                                 </div>
                             </form>  
                         </div>
@@ -87,7 +88,7 @@
                         <div class="icono-muerte">
                             <img src="img/diablo.png" alt="Icono de la muerte">
                         </div>
-                        <div class="titulo text-center">
+                        <div class="titulo text-center m-5">
                             <h4>PROBABILIDAD DE SOBREVIVIR</h4>
                         </div>
                         <div class="probabilidad-juego">

@@ -91,33 +91,33 @@ class JuegoController extends Controller
         return view('juegoPuntuacion', compact('usuarios')); 
     }
 
-    public function modificarImg(Request $request){
+    // public function modificarImg(Request $request){
         
-        $imagen = '';
-        if ($request->hasFile('imagen')) {
-            $imagen = $request->file('imagen');
-            $imagen->store('public/img');
-        }
+    //     $imagen = '';
+    //     if ($request->hasFile('imagen')) {
+    //         $imagen = $request->file('imagen');
+    //         $imagen->store('public/img');
+    //     }
 
-        $usu = $request->usuario;
-        Usuario::where('nickname', $usu)
-            ->update(['imagen'=>$imagen]);
+    //     $usu = $request->usuario;
+    //     Usuario::where('nickname', $usu)
+    //         ->update(['imagen'=>$imagen]);
 
-        $fechaHoraActual = Carbon::now();
-        $fecha = $fechaHoraActual->toDateString();
-        $hora = $fechaHoraActual->toTimeString();
+    //     $fechaHoraActual = Carbon::now();
+    //     $fecha = $fechaHoraActual->toDateString();
+    //     $hora = $fechaHoraActual->toTimeString();
     
     
-        $usu = $request->usuario;
-        Usuario::where('nickname', $usu)
-            ->update(['fecha'=>$fecha]);
+    //     $usu = $request->usuario;
+    //     Usuario::where('nickname', $usu)
+    //         ->update(['fecha'=>$fecha]);
     
-        Usuario::where('nickname', $usu)
-            ->update(['hora'=>$hora]);
-        $usuarios = Usuario::all();
+    //     Usuario::where('nickname', $usu)
+    //         ->update(['hora'=>$hora]);
+    //     $usuarios = Usuario::all();
 
-        return view('juegoPuntuacion', compact('usuarios'));
-    }
+    //     return view('juegoPuntuacion', compact('usuarios'));
+    // }
 
     public function eliminarUsuario(Request $request){
 
@@ -146,6 +146,11 @@ class JuegoController extends Controller
     public function juegoRanking(Request $request){
 
         $usu = $request->usuario;
+        $img = $request->imagen;
+
+        Usuario::where('nickname', $usu)
+            ->update(['imagen'=>$img]);
+
         $usuarios = Usuario::orderBy('puntos', 'desc')
                 ->orderBy('fecha', 'desc')
                 ->orderBy('hora', 'desc')
@@ -168,6 +173,19 @@ class JuegoController extends Controller
         $hora = $request->hora;
 
         $pdf = PDF::loadView('pdf', ['puesto'=>$puesto,'nombre'=>$usuario,'puntos'=>$puntos,'fecha'=>$fecha,'hora'=>$hora]);
+        // $pdf->loadHTML('<h1>Hola</h1>');
+        return $pdf->download('EligeTuCamino.pdf');
+    }
+
+    public function descargarPDF2(Request $request){
+
+        $puesto = $request->puesto;
+        $usuario = $request->nombre;
+        $puntos = $request->puntos;
+        $fecha = $request->fecha;
+        $hora = $request->hora;
+
+        $pdf = PDF::loadView('pdf2', ['puesto'=>$puesto,'nombre'=>$usuario,'puntos'=>$puntos,'fecha'=>$fecha,'hora'=>$hora]);
         // $pdf->loadHTML('<h1>Hola</h1>');
         return $pdf->download('EligeTuCamino.pdf');
     }

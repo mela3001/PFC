@@ -16,6 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Creepster&family=Dosis:wght@500&family=Mansalva&display=swap" rel="stylesheet">
+    {{-- favicon --}}
+    <link rel="icon" type="image/jpg" href="img/camino.png"/>
 </head>
 <body class="juego">
     <!-- CABECERA -->
@@ -85,7 +87,7 @@
                                         <td>{{$usuario->fecha}}</td>
                                         <td>{{$usuario->hora}}</td>
                                         <td>
-                                            <form action="{{route('descargarPDF')}}" method="GET">
+                                            <form action="{{route('descargarPDF2')}}" method="GET">
                                                 @csrf
                                                 <input type="hidden" name="puesto" value="{{$contador}}">
                                                 <input type="hidden" name="nombre" value="{{$usuario->nickname}}">

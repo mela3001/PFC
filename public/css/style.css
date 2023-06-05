@@ -283,6 +283,10 @@ body {
     }
 }
 
+.titulo-juego{
+    font-size: 16px;
+}
+
 .titulo h1{
     letter-spacing: 2px;
     font-family: 'Creepster', cursive;
@@ -437,6 +441,11 @@ body {
     border-radius: 5px;
 }
 
+.botones-juego{
+    display: flex;
+    align-items: center;
+}
+
 .op_btn {
     width: 100%;
     background: #CB5EFF;
@@ -552,7 +561,6 @@ body {
     margin-top: -0px;
 }
 .user_card-puntuacion {
-    height: 540px;
     width: 100%;
     margin-top: auto;
     margin-bottom: auto;

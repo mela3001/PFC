@@ -16,6 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Creepster&family=Dosis:wght@500&family=Mansalva&display=swap" rel="stylesheet">
+    {{-- favicon --}}
+    <link rel="icon" type="image/jpg" href="img/camino.png"/>
 </head>
 <body class="juego">
     <!-- CABECERA -->
@@ -46,20 +48,20 @@
                                     <div class="img">
                                         <form action="{{route('juegoRanking')}}" method="GET">
                                             @csrf
-                                            <div>
-                                                <label>
-                                                    <input type="radio" name="imagen" value="fotoInicio.png" checked>
-                                                    <img src="img/fotoInicio.png" alt="Imagen 1" style="width: 40px">
+                                            <div class="d-flex align-items-center me-5">
+                                                <label class="d-flex flex-column align-items-center justify-content-center text-center">
+                                                    <input class="mb-1" type="radio" name="imagen" value="fotoInicio.png" checked>
+                                                    <img src="img/fotoInicio.png" alt="Perfil 1" style="width: 40px">
                                                 </label>
                                                 <br>
-                                                <label>
-                                                    <input type="radio" name="imagen" value="imagen2.jpg">
-                                                    <img src="ruta-de-imagen2.jpg" alt="Imagen 2">
+                                                <label class="d-flex flex-column align-items-center justify-content-center">
+                                                    <input class="mb-1" type="radio" name="imagen" value="perfil1.png">
+                                                    <img src="img/perfil1.png" alt="Perfil 2" style="width: 40px">
                                                 </label>
                                                 <br>
-                                                <label>
-                                                    <input type="radio" name="imagen" value="imagen3.jpg">
-                                                    <img src="ruta-de-imagen3.jpg" alt="Imagen 3">
+                                                <label class="d-flex flex-column align-items-center justify-content-center">
+                                                    <input class="mb-1" type="radio" name="imagen" value="perfil2.png">
+                                                    <img src="img/perfil2.png" alt="Perfil 3" style="width: 40px">
                                                 </label>
                                                 <!-- Agrega más checkboxes según tus necesidades -->
                                             </div>
@@ -79,22 +81,22 @@
                         <!-- FIN IMAGEN -->
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center form_container eliminar-guardar">
-                        <div class="text-center h-100 titulo">
+                        <div class="text-center h-100 titulo mt-5">
                             <h4>¿Desea eliminar o guardar su partida?</h4>
                         </div>
                         <!-- FORMULARIO -->
-                        <div class="d-flex justify-content-center mt-3 login_container botonesPuntos">
+                        <div class="d-flex  align-items-center justify-content-center mt-3 login_container botonesPuntos">
                             {{-- <a href="{{route('eliminarUsuario', session('usuario'))}}" class="btn op1_btn">ELIMINAR</a> --}}
                             
 
                                 <input type="hidden" name="usuario" value='{{session('usuario')}}'>
-                                <button type="input" name="button" class="btn op_btn">GUARDAR</button>
+                                <button type="input" name="button" class="btn op_btn m-2">GUARDAR</button>
                             </form> 
 
                             <form action="{{route('eliminarUsuario')}}" method="GET">
                                 @csrf
                                 <input type="hidden" name="usuario" value='{{session('usuario')}}'>
-                                <button type="input" name="button" class="btn op_btn">ELIMINAR</button>
+                                <button type="input" name="button" class="btn op_btn m-2">ELIMINAR</button>
                             </form>
                             
                                

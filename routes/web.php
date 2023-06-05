@@ -32,3 +32,4 @@ Route::get('eliminarUsuario', [JuegoController::class, 'eliminarUsuario']) -> na
 Route::get('juegoRanking', [JuegoController::class, 'juegoRanking']) -> name('juegoRanking');
 
 Route::get('descargarPDF', [JuegoController::class, 'descargarPDF']) -> name('descargarPDF');
+Route::get('descargarPDF2', [JuegoController::class, 'descargarPDF2']) -> name('descargarPDF2');

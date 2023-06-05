@@ -13,9 +13,9 @@
             <br>
             <img src="img/enhorabuena.png" alt="Imagen de enhorabuena" width="100px">
             <br><br>
-            <h1>¡¡¡Enhorabuena <span style="color:#CB5EFF;">{{$nombre}}</span>!!!</h1>
+            <h1>¡¡¡<span style="color:#CB5EFF;">{{$nombre}}</span> con el <span style="color:red;">{{$puesto}}º</span> puesto!!!</h1>
             <br>
-            <h2>Has obtenido <span style="color:green;">{{$puntos}} puntos</span> consiguiendo así <br>el <span style="color:red;">{{$puesto}}º</span> puesto.</h2>
+            <h2>El usuario <span style="color:#CB5EFF;">{{$nombre}}</span> ha obtenido <span style="color:green;">{{$puntos}} puntos</span> consiguiendo así <br>el <span style="color:red;">{{$puesto}}º</span> puesto.</h2>
             <br>
             <p style="font-size: 17px">Estos resultados se registraron con fecha <b>{{$fecha}}</b> y hora <b>{{$hora}}</b></p>
         </div>

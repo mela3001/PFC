@@ -23,7 +23,7 @@ use App\Http\Controllers\JuegoController;
 Route::get('/', HomeController::class) -> name('home'); 
 
 // JUEGO
-Route::get('juegoPrimero', [JuegoController::class, 'inicioJuego']) -> name('juegoPrimero');
+Route::get('juegoPrimero', [JuegoController::class, 'juegoPrimero']) -> name('juegoPrimero');
 Route::put('juegoResto', [JuegoController::class, 'juegoResto']) -> name('juegoResto');
 Route::put('puntuacion', [JuegoController::class, 'puntuacion']) -> name('puntuacion');
 Route::post('modificarImg', [JuegoController::class, 'modificarImg']) -> name('modificarImg');

@@ -60,6 +60,7 @@
                                     <input type="hidden" name="opcion" value="{{$juego1->opcion1ruta}}">
                                     <input type="hidden" name="usuario" value='{{session('usuario')}}'>
                                     <input type="hidden" name="prob" value="{{$juego1->probabilidad}}">
+                                    <input type="hidden" name="valor_unico" value="{{ $valorUnico }}">
                                     <button type="submit" class="btn op1_btn" onclick="goToNextPage()">{{ $juego1->opcion1 }}</button>
                                 </div>
                             </form>
@@ -70,6 +71,7 @@
                                     <input type="hidden" name="opcion" value="{{$juego1->opcion2ruta}}">
                                     <input type="hidden" name="usuario" value='{{session('usuario')}}'>
                                     <input type="hidden" name="prob" value="{{$juego1->probabilidad}}">
+                                    <input type="hidden" name="valor_unico" value="{{ $valorUnico }}">
                                     <button type="submit" class="btn op1_btn" onclick="goToNextPage()">{{ $juego1->opcion2 }}</button>
                                 </div>
                             </form>  
@@ -118,5 +120,15 @@
           audio.play();
         }
         </script> --}}
+        <script>
+            window.addEventListener('popstate', function (event) {
+            // Muestra una alerta al usuario
+            alert('No puedes retroceder. Permanece en esta página.');
+
+            // Redirige al usuario a la página actual nuevamente
+            history.pushState(null, null, location.href);
+            });
+        </script>
+        
 </body>
 </html>

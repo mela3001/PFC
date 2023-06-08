@@ -26,7 +26,7 @@ body {
 }
 
 .bg-image{
-    /* background-image: url('img/collage3.PNG'); */
+    /* background-image: url('img/mapa.jpg'); */
     background-color: #d7b8ff;
     padding: 5px;
     border-radius: 5px;
@@ -143,6 +143,9 @@ body {
     background: #d7b8ff;
     padding: 10px;
     text-align: center;
+}
+.brand_logo_container img{
+    background-color: white;
 }
 /* IMAGEN LOGIN */
 .brand_logo {
@@ -332,6 +335,10 @@ body {
     box-shadow: 0 10px 10px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: all0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+a{
+    text-decoration: none;
+    color: black;
 }
 .icono{
     margin-top: -10px;

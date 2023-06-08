@@ -14,13 +14,15 @@ class JuegoController extends Controller
 {
     //
     // JUEGO
-    public function inicioJuego(Request $request){
+    public function juegoPrimero(Request $request){
         $usuario = $request->nickname;
+        $usuarioMinuscula = strtolower($usuario);
         $existe=false;
 
         $usuarios = Usuario::all();
         foreach($usuarios as $usu){
-            if(($usu -> nickname) == $usuario){
+            
+            if(($usu -> nickname) == $usuario || strtolower($usu -> nickname) == $usuarioMinuscula){
                 $existe = true;
             }
         }
@@ -49,10 +51,20 @@ class JuegoController extends Controller
         $juego1 = Juego::where('id', 1)->first();
         // $juego1->titulo = $usuario+' '+$juego1->titulo;
         // $juego1->save();
-        return view('juego', compact('juego1'));
+
+        $valorUnico = uniqid(); // Generar un valor único
+        cookie('valor_unico', $valorUnico, 60); // Almacenar el valor en una cookie durante 60 minutos
+        $data = [
+            'juego1' => $juego1,
+            'valorUnico' => $valorUnico,
+        ];
+        return view('juego', compact('data'));
     }
 
     public function juegoResto(Request $request){
+        $valorUnicoCookie = cookie('valor_unico');
+        $valorUnicoFormulario = $request->input('valor_unico');
+
         $usu = $request->usuario;
         $prob = $request->prob;
         $opcion = $request->opcion;
@@ -60,10 +72,22 @@ class JuegoController extends Controller
         if ($juego1->probabilidad == 0 || $juego1->probabilidad == 100) {
             return view('juegoFin', compact('juego1'));
         }else{
-            Usuario::where('nickname', $usu)
-            ->update(['puntos'=>$prob]);
+            if ($valorUnicoCookie === $valorUnicoFormulario) {
+                 Usuario::where('nickname', $usu)
+                ->update(['puntos'=>$prob]);
 
-            return view('juego', compact('juego1')); 
+                $data = [
+                    'juego1' => $juego1,
+                    'valorUnico' => $valorUnicoCookie,
+                ];
+                return view('juego', compact('data'));
+
+            } else {
+                Usuario::where('nickname', $usu)
+                ->delete();
+                return view('trampas', compact('usu'));
+            }
+           
         }
     }
 
@@ -91,33 +115,6 @@ class JuegoController extends Controller
         return view('juegoPuntuacion', compact('usuarios')); 
     }
 
-    // public function modificarImg(Request $request){
-        
-    //     $imagen = '';
-    //     if ($request->hasFile('imagen')) {
-    //         $imagen = $request->file('imagen');
-    //         $imagen->store('public/img');
-    //     }
-
-    //     $usu = $request->usuario;
-    //     Usuario::where('nickname', $usu)
-    //         ->update(['imagen'=>$imagen]);
-
-    //     $fechaHoraActual = Carbon::now();
-    //     $fecha = $fechaHoraActual->toDateString();
-    //     $hora = $fechaHoraActual->toTimeString();
-    
-    
-    //     $usu = $request->usuario;
-    //     Usuario::where('nickname', $usu)
-    //         ->update(['fecha'=>$fecha]);
-    
-    //     Usuario::where('nickname', $usu)
-    //         ->update(['hora'=>$hora]);
-    //     $usuarios = Usuario::all();
-
-    //     return view('juegoPuntuacion', compact('usuarios'));
-    // }
 
     public function eliminarUsuario(Request $request){
 

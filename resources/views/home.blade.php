@@ -41,7 +41,7 @@
                     <div class="d-flex justify-content-center">
                         <!-- IMAGEN -->
                         <div class="brand_logo_container">
-                            <img src="https://thumbs.dreamstime.com/b/icono-de-usuario-personas-vectoriales-vector-perfil-ilustraci%C3%B3n-persona-comercial-s%C3%ADmbolo-grupo-usuarios-masculino-195157776.jpg" class="brand_logo" alt="Logo">
+                            <img src="img/camino.png" class="brand_logo" alt="Logo">
                         </div>
                         <!-- FIN IMAGEN -->
                     </div>
@@ -139,22 +139,22 @@
                 <div class="d-flex justify-content-center align-items-center w-100">
                     <!-- enlaces -->
                     <ul class="wrapper">
-                        <li class="icon facebook">
+                        {{-- <li class="icon facebook">
                             <span class="tooltip">Facebook</span>
-                            <div class="icono"><i class="bi bi-facebook"></i></i></div>
-                        </li>
+                            <div class="icono"><i class="bi bi-facebook"></i></i></div> --}}
+                        {{-- </li> --}}
                         <li class="icon linkedin">
                             <span class="tooltip">Linkedin</span>
-                            <div class="icono"><i class="bi bi-linkedin"></i></i></div>
+                            <a href="https://www.linkedin.com/in/carmen-raquel-yelmo-guzm%C3%A1n"><div class="icono"><i class="bi bi-linkedin"></i></i></div></a>
                         </li>
                         <li class="icon github">
                             <span class="tooltip">GitHub</span>
-                            <div class="icono"><i class="bi bi-github"></i></div>
+                            <a href="https://github.com/mela3001/PFC.git"><div class="icono"><i class="bi bi-github"></i></div></a>
                         </li>
-                        <li class="icon instagram">
+                        {{-- <li class="icon instagram">
                             <span class="tooltip">Instagram</span>
                             <div class="icono"><i class="bi bi-instagram"></i></div>
-                        </li>
+                        </li> --}}
                     </ul>
                     
                     <!-- fin enlaces -->

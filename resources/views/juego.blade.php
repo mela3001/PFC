@@ -49,6 +49,10 @@
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center form_container">
                         <div class="text-center h-100 titulo titulo-juego p-4">
+                           
+                            {{-- @foreach (session('mi_arrayId') as $hobby)
+                                <p>{{ $hobby }} | </p>
+                            @endforeach --}}
                             <h4>{{ $juego1->titulo }}</h4>
                         </div>
                         <!-- FORMULARIO -->
@@ -60,8 +64,8 @@
                                     <input type="hidden" name="opcion" value="{{$juego1->opcion1ruta}}">
                                     <input type="hidden" name="usuario" value='{{session('usuario')}}'>
                                     <input type="hidden" name="prob" value="{{$juego1->probabilidad}}">
-                                    <input type="hidden" name="valor_unico" value="{{ $valorUnico }}">
-                                    <button type="submit" class="btn op1_btn" onclick="goToNextPage()">{{ $juego1->opcion1 }}</button>
+                                    <input type="hidden" name="opcionNoElegida" value="{{$juego1->opcion2ruta}}">
+                                    <button type="submit" class="btn op1_btn">{{ $juego1->opcion1 }}</button>
                                 </div>
                             </form>
                             <form action="{{route('juegoResto')}}" method="POST">
@@ -71,8 +75,8 @@
                                     <input type="hidden" name="opcion" value="{{$juego1->opcion2ruta}}">
                                     <input type="hidden" name="usuario" value='{{session('usuario')}}'>
                                     <input type="hidden" name="prob" value="{{$juego1->probabilidad}}">
-                                    <input type="hidden" name="valor_unico" value="{{ $valorUnico }}">
-                                    <button type="submit" class="btn op1_btn" onclick="goToNextPage()">{{ $juego1->opcion2 }}</button>
+                                    <input type="hidden" name="opcionNoElegida" value="{{$juego1->opcion1ruta}}">
+                                    <button type="submit" class="btn op1_btn">{{ $juego1->opcion2 }}</button>
                                 </div>
                             </form>  
                         </div>
@@ -84,7 +88,7 @@
                 </div>
             <!-- Background image -->
             <!-- Background image2 -->
-                <div class="d-flex flex-column justify-content-center align-items-center w-100">
+                <div class="d-flex flex-column justify-content-center align-items-center prob">
                     <!-- CARD -->
                     <div class="p-4 user_card2-juego d-flex flex-column justify-content-center align-items-center">
                         <div class="icono-muerte">
@@ -112,23 +116,5 @@
         </div>
         <!-- fin título -->
     </footer>
-
-    {{-- SCRIPTS --}}
-    {{-- <script>
-        function playAudio() {
-          var audio = document.getElementById("myAudio");
-          audio.play();
-        }
-        </script> --}}
-        <script>
-            window.addEventListener('popstate', function (event) {
-            // Muestra una alerta al usuario
-            alert('No puedes retroceder. Permanece en esta página.');
-
-            // Redirige al usuario a la página actual nuevamente
-            history.pushState(null, null, location.href);
-            });
-        </script>
-        
 </body>
 </html>

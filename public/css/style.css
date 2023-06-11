@@ -35,6 +35,7 @@ body {
 .bg-image2{
     /* background-image: url('img/collage3.PNG'); */
     background-color: #d7b8ff;
+    /* width: 1000px; */
     /* height: 430px; */
     margin-left: 20px;
     max-width: 300px;
@@ -59,6 +60,31 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+}
+@media (max-width: 950px) {
+    .primer{
+        width: 400px;
+    }
+    .puntos{
+        width: 200%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .puntos div{
+        margin: 15px 35px;
+    }
+    .img2{
+        display: flex;
+        justify-content: center;
+    }
+
+    .table{
+        margin: -45px;
+        max-width: 155px;
+        font-size: 9px;
+    }
 }
 
 .segundo{
@@ -85,7 +111,7 @@ body {
         margin-bottom: 0px;
     }
     .bg-image2{
-        width: 400px;
+        width: 1000px;
     }
     .bg-image3{
         width: 100%;
@@ -239,6 +265,7 @@ body {
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.837);
     cursor: pointer;
+    box-shadow: 0px 1px 17px 6px rgba(237,230,33,1);
 }
 
 .user_card2 {
@@ -446,6 +473,22 @@ a{
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
+}
+@media (max-width: 950px) {
+    .user_card-juego{
+        width: 400px;
+        height: 100%;
+        padding: 10px;
+        margin: 20px;
+    }
+    .user_card2-juego{
+        width: 400px;
+        margin-top: 20px;
+        padding: 5px;
+    }
+    .prob{
+        width: 1000px;
+    }
 }
 
 .botones-juego{

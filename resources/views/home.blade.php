@@ -114,7 +114,7 @@
 
         <div class="segundo">
             <!-- Background image -->
-            <div class="p-5 text-center bg-image3">
+            <div class="p-5 text-center bg-image3"style="background: url('img/mapa4.jpg');">
                 <div class="d-flex justify-content-center align-items-center w-100">
                 <!-- CARD -->
                 <div class="user_card3">

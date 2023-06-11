@@ -48,7 +48,7 @@
                                     <div class="img">
                                         <form action="{{route('juegoRanking')}}" method="GET">
                                             @csrf
-                                            <div class="d-flex align-items-center me-5">
+                                            <div class="d-flex align-items-center me-5 img2">
                                                 <label class="d-flex flex-column align-items-center justify-content-center text-center">
                                                     <input class="mb-1" type="radio" name="imagen" value="fotoInicio.png" checked>
                                                     <img src="img/fotoInicio.png" alt="Perfil 1" style="width: 40px">

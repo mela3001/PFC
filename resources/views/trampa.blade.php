@@ -37,17 +37,14 @@
                 <div class="d-flex justify-content-center align-items-center w-100">
                 <!-- CARD -->
                 <div class="user_card-juego p-5">
-                    
                     <div class="d-flex flex-column justify-content-center align-items-center form_container">
                         <div class="text-center h-100 titulo">
-                            <h4>Has hecho trampas{{ $usu }}... por lo tanto se elimina tu partida.</h4>
+                            <h4>Has hecho trampas <b>{{ $usu }}</b>... por lo tanto se elimina tu partida.</h4>
                         </div>
+                        <br><br><br>
                         <!-- FORMULARIO -->
-                        <form action="{{route('home')}}" method="POST">
-                            @csrf
-                            <div class="d-flex justify-content-center mt-3 login_container">
-                                <button type="submit" name="button" class="btn op1_btn">SALIR</button>
-                            </div>
+                        <form action="{{route('home')}}">
+                            <button type="submit" name="button" class="btn op1_btn mb-3">Volver al inicio</button>
                         </form>
                         <!-- FIN FORMULARIO -->
                     </div>

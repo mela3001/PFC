@@ -48,54 +48,74 @@ class JuegoController extends Controller
             $usuarioNuevo->save();
         }
 
+        $miArrayId = [1];
+        session()->put('mi_arrayId', $miArrayId);
+        // dd(session()->get('mi_arrayId'));
         $juego1 = Juego::where('id', 1)->first();
-        // $juego1->titulo = $usuario+' '+$juego1->titulo;
-        // $juego1->save();
-
-        $valorUnico = uniqid(); // Generar un valor único
-        cookie('valor_unico', $valorUnico, 60); // Almacenar el valor en una cookie durante 60 minutos
         $data = [
             'juego1' => $juego1,
-            'valorUnico' => $valorUnico,
         ];
-        return view('juego', compact('data'));
+        return view('juego', $data);
     }
 
     public function juegoResto(Request $request){
-        $valorUnicoCookie = cookie('valor_unico');
-        $valorUnicoFormulario = $request->input('valor_unico');
-
         $usu = $request->usuario;
         $prob = $request->prob;
         $opcion = $request->opcion;
+        $opcionNoElegida = $request->opcionNoElegida;
+
         $juego1 = Juego::where('id', $opcion)->first();
-        if ($juego1->probabilidad == 0 || $juego1->probabilidad == 100) {
+        
+        $miArrayId = session()->get('mi_arrayId');
+        // dd(session()->get('mi_arrayId'));
+        
+        if ($juego1->probabilidad == 0) {
+            array_push($miArrayId, $opcionNoElegida);
+            array_push($miArrayId, $opcion);
+            session()->put('mi_arrayId', $miArrayId);
+
             return view('juegoFin', compact('juego1'));
+
+        }else if($juego1->probabilidad == 100){
+            array_push($miArrayId, $opcionNoElegida);
+            array_push($miArrayId, $opcion);
+            session()->put('mi_arrayId', $miArrayId);
+            
+            Usuario::where('nickname', $usu)
+                    ->update(['puntos'=> $juego1->probabilidad]);
+            return view('juegoFin', compact('juego1'));
+
         }else{
-            if ($valorUnicoCookie === $valorUnicoFormulario) {
-                 Usuario::where('nickname', $usu)
-                ->update(['puntos'=>$prob]);
+            if (in_array($request->opcion, $miArrayId) || in_array($request->opcionNoElegida, $miArrayId)) {
+                Usuario::where('nickname', $usu)
+                    ->delete();
+                return view('trampa', compact('usu'));
+
+            } else {
+                
+                array_push($miArrayId, $opcionNoElegida);
+                array_push($miArrayId, $opcion);
+                session()->put('mi_arrayId', $miArrayId);
+
+                Usuario::where('nickname', $usu)
+                    ->update(['puntos'=>$juego1->probabilidad]);
 
                 $data = [
                     'juego1' => $juego1,
-                    'valorUnico' => $valorUnicoCookie,
                 ];
-                return view('juego', compact('data'));
-
-            } else {
-                Usuario::where('nickname', $usu)
-                ->delete();
-                return view('trampas', compact('usu'));
+                return view('juego', $data);
+                
             }
            
         }
     }
 
     public function puntuacion(Request $request){
+        session()->forget('mi_arrayId');
+
         $fechaHoraActual = Carbon::now();
         $fecha = $fechaHoraActual->toDateString();
         $hora = $fechaHoraActual->toTimeString();
-
 
         $usu = $request->usuario;
         Usuario::where('nickname', $usu)

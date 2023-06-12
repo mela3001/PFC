@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nickname', 50)->unique();
+            $table->string('nickname', 50);
             $table->text('imagen'); //+255
             $table->integer('puntos');
+            $table->date('fecha');
+            $table->time('hora');
             $table->timestamps();
         });
     }

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('juegos', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo', 100);
-            $table->string('opcion1', 50);
-            $table->string('opcion2', 50);
+            $table->text('titulo');
+            $table->string('opcion1', 100);
+            $table->string('opcion2', 100);
             $table->text('imagen'); //+255
             $table->integer('probabilidad');
             $table->integer('opcion1ruta');

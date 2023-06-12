@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController; //importado el controlador
 use App\Http\Controllers\JuegoController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,12 @@ Route::get('juegoRanking', [JuegoController::class, 'juegoRanking']) -> name('ju
 
 Route::get('descargarPDF', [JuegoController::class, 'descargarPDF']) -> name('descargarPDF');
 Route::get('descargarPDF2', [JuegoController::class, 'descargarPDF2']) -> name('descargarPDF2');
+
+
+Route::get('/run-migration', function(){
+
+    Artisan::call('optimize:clear');
+    Artisan::call('migrate:fresh --sedd');
+
+    return "Migrations executed successfully";
+});

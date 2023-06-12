@@ -19,7 +19,8 @@
     {{-- favicon --}}
     <link rel="icon" type="image/jpg" href="img/camino.png"/>
 </head>
-<body class="juego">
+<audio id="myAudio" src="{{ asset('audio/anime-wow-sound-effect.mp3') }}"></audio>
+<body class="juego" onload="playAudio()">
     <!-- CABECERA -->
     <header class="d-flex justify-content-center w-100">
         <!-- título -->
@@ -120,4 +121,10 @@
         <!-- fin título -->
     </footer>
 </body>
+<script>
+    function playAudio() {
+      var audio = document.getElementById("myAudio");
+      audio.play();
+    }
+</script>
 </html>

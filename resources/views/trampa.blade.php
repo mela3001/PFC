@@ -37,6 +37,13 @@
                 <div class="d-flex justify-content-center align-items-center w-100">
                 <!-- CARD -->
                 <div class="user_card-juego p-5">
+                    <div class="d-flex justify-content-center">
+                        <!-- IMAGEN -->
+                        <div class="img-juego2">
+                            <img src="img/achtung.png" alt="Imagen">
+                        </div>
+                        <!-- FIN IMAGEN -->
+                    </div>
                     <div class="d-flex flex-column justify-content-center align-items-center form_container">
                         <div class="text-center h-100 titulo">
                             <h4>Has hecho trampas <b>{{ $usu }}</b>... por lo tanto se elimina tu partida.</h4>

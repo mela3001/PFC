@@ -80,7 +80,7 @@ class JuegoController extends Controller
             array_push($miArrayId, $opcionNoElegida);
             array_push($miArrayId, $opcion);
             session()->put('mi_arrayId', $miArrayId);
-            
+
             Usuario::where('nickname', $usu)
                     ->update(['puntos'=> $juego1->probabilidad]);
             return view('juegoFin', compact('juego1'));
@@ -112,7 +112,6 @@ class JuegoController extends Controller
 
     public function puntuacion(Request $request){
         session()->forget('mi_arrayId');
-
         $fechaHoraActual = Carbon::now();
         $fecha = $fechaHoraActual->toDateString();
         $hora = $fechaHoraActual->toTimeString();

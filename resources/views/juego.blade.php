@@ -19,8 +19,7 @@
     {{-- favicon --}}
     <link rel="icon" type="image/jpg" href="img/camino.png"/>
 </head>
-{{-- <audio id="myAudio" src="{{ asset('audio/aves.mp3') }}"></audio>
-<body onload="playAudio()"> --}}
+<audio id="myAudio" src="{{ asset('audio/correct.mp3') }}"></audio>
 <body class="juego">
     <!-- CABECERA -->
     <header class="d-flex justify-content-center w-100">
@@ -65,7 +64,7 @@
                                     <input type="hidden" name="usuario" value='{{session('usuario')}}'>
                                     <input type="hidden" name="prob" value="{{$juego1->probabilidad}}">
                                     <input type="hidden" name="opcionNoElegida" value="{{$juego1->opcion2ruta}}">
-                                    <button type="submit" class="btn op1_btn">{{ $juego1->opcion1 }}</button>
+                                    <button type="submit" class="btn op1_btn" onclick="playAudio(event)">{{ $juego1->opcion1 }}</button>
                                 </div>
                             </form>
                             <form action="{{route('juegoResto')}}" method="POST">
@@ -76,7 +75,7 @@
                                     <input type="hidden" name="usuario" value='{{session('usuario')}}'>
                                     <input type="hidden" name="prob" value="{{$juego1->probabilidad}}">
                                     <input type="hidden" name="opcionNoElegida" value="{{$juego1->opcion1ruta}}">
-                                    <button type="submit" class="btn op1_btn">{{ $juego1->opcion2 }}</button>
+                                    <button type="submit" class="btn op1_btn" onclick="playAudio(event)">{{ $juego1->opcion2 }}</button>
                                 </div>
                             </form>  
                         </div>
@@ -117,4 +116,19 @@
         <!-- fin título -->
     </footer>
 </body>
+
+<script>
+    function playAudio(event) {
+      event.preventDefault(); // Detener el envío automático del formulario
+      var audio = document.getElementById("myAudio");
+      
+      // Reproducir el audio
+      audio.play();
+  
+      // Esperar a que termine la reproducción del audio antes de enviar el formulario
+    audio.addEventListener('ended', function() {
+        event.target.closest('form').submit();
+    });
+    }
+  </script>
 </html>

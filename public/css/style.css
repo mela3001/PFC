@@ -600,7 +600,18 @@ a{
 .puntos .ptos{
     text-align: center;
     font-size: 25px;
+    animation: animacion-infinita 1s 3;
+    text-shadow:0px 0px 20px green;
 }
+  
+  @keyframes animacion-infinita {
+    0%, 100% {
+      transform: scale(1); /* Tamaño original de la imagen */
+    }
+    50% {
+      transform: scale(1.5); /* Tamaño aumentado de la imagen */
+    }
+  }
 
 .titulo-puntos h4{
     margin-top: 30px;
@@ -658,3 +669,29 @@ a{
     padding: 3px 30px;
     cursor: pointer;
   }
+
+  .img-juego2 {
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: animacion-infinita 1s infinite;
+  }
+  
+  @keyframes animacion-infinita {
+    0%, 100% {
+      transform: scale(1); /* Tamaño original de la imagen */
+    }
+    50% {
+      transform: scale(1.2); /* Tamaño aumentado de la imagen */
+    }
+  }
+
+  .img-juego2 img{
+    width: 100px;
+    margin-bottom: -10px;
+    /* filter: drop-shadow(0px 1px 20px 6px rgb(151, 0, 0)); */
+    filter: drop-shadow(-2px 2px 18px rgb(151, 0, 0));
+  }
+
+
